@@ -1,7 +1,11 @@
-# Projeto: Generalização do `exemplo4.py`
+# Rede Neural MLP Vetorizada com Verificação Numérica de Gradiente
 
-Autor: Maurício Rodrigues da Silva
-Disciplina: Matemática para Ciência de Dados
+> Generalização do `exemplo4.py`: uma MLP genérica, vetorizada e com
+> verificação numérica de gradiente, aplicada a um problema não
+> linearmente separável (`make_circles`).
+
+**Autor:** Maurício Rodrigues da Silva
+**Disciplina:** Matemática para Ciência de Dados
 
 ## Objetivo
 
