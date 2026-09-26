@@ -36,38 +36,8 @@ gradiente** para garantir a corretude do backpropagation.
 
 ## Arquitetura da Rede
 
-MLP totalmente conectada, com forward pass vetorizado:
-
-```mermaid
-flowchart LR
-    subgraph Entrada
-        x1((x1))
-        x2((x2))
-    end
-
-    subgraph "Camada oculta (n_h = 8, tanh)"
-        h1((y0_1))
-        h2((y0_2))
-        h3((...))
-        h4((y0_8))
-    end
-
-    subgraph "Saída (sigmoid)"
-        o1((y1))
-    end
-
-    x1 --> h1
-    x1 --> h2
-    x1 --> h4
-    x2 --> h1
-    x2 --> h2
-    x2 --> h4
-
-    h1 --> o1
-    h2 --> o1
-    h3 --> o1
-    h4 --> o1
-```
+MLP totalmente conectada, com forward pass vetorizado: 2 entradas $\to$ 8
+neurônios na camada oculta (`tanh`) $\to$ 1 saída (`sigmoid`).
 
 $$
 v^{(0)} = W^{(0)} x + b^{(0)}, \qquad y^{(0)} = f\big(v^{(0)}\big)
@@ -206,13 +176,41 @@ que o backpropagation implementado está correto.
   mini-batches de 16 amostras, 200 épocas, $\text{lr} = 0.1$.
 - A loss média cai de $\approx 0.125$ (época 0) para $\approx 0.012$
   (época 180).
-- **Acurácia final: 199/200 = 99,50%**.
+- **Acurácia final: ≈ 97-99%** (varia levemente entre execuções, pois o
+  dataset não usa semente fixa).
 
-O script gera três figuras:
+O script gera as três figuras abaixo.
 
-- `circles.svg` — dataset normalizado;
-- `curva_loss.svg` — curva de aprendizado (loss por época);
-- `fronteira_decisao.svg` — fronteira de decisão aprendida pela rede.
+### Dataset normalizado
+
+![Dataset make_circles normalizado](circles.svg)
+
+Os dois círculos concêntricos (classes azul e vermelha) mostram um
+problema **não linearmente separável**: não existe uma reta capaz de
+separar as duas classes, o que justifica o uso de uma camada oculta com
+ativação não linear (`tanh`).
+
+### Curva de aprendizado
+
+![Curva de loss por época](curva_loss.svg)
+
+A loss média (MSE) cai de forma consistente ao longo das 200 épocas,
+sem oscilações bruscas — evidência de que o gradiente com momento e o
+treino em mini-batch estão convergindo de forma estável. A curva
+achata-se após ≈ 150 épocas, indicando que a rede já se aproxima de um
+mínimo local satisfatório para o problema.
+
+### Fronteira de decisão
+
+![Fronteira de decisão aprendida](fronteira_decisao.svg)
+
+A região colorida mostra como a rede classifica cada ponto do plano. A
+fronteira aprendida acompanha o formato circular esperado, separando o
+círculo interno do externo — confirmando que os 8 neurônios da camada
+oculta com `tanh` foram suficientes para capturar a não linearidade do
+problema. Os poucos pontos classificados incorretamente ficam
+concentrados na fronteira entre as duas classes, onde o ruído do
+dataset (`noise=0.1`) mais se sobrepõe.
 
 ---
 
