@@ -39,6 +39,47 @@ gradiente** para garantir a corretude do backpropagation.
 MLP totalmente conectada, com forward pass vetorizado: 2 entradas $\to$ 8
 neurônios na camada oculta (`tanh`) $\to$ 1 saída (`sigmoid`).
 
+```mermaid
+flowchart LR
+    classDef input fill:#e3f2fd,stroke:#1565c0,stroke-width:1.5px,color:#0d47a1,font-weight:bold;
+    classDef hidden fill:#ede7f6,stroke:#5e35b1,stroke-width:1.5px,color:#311b92,font-weight:bold;
+    classDef output fill:#ffebee,stroke:#c62828,stroke-width:1.5px,color:#b71c1c,font-weight:bold;
+    classDef layer fill:none,stroke:#9e9e9e,stroke-dasharray: 3 3,color:#616161;
+
+    subgraph L0[" Entrada · d = 2 "]
+        direction TB
+        x1(("x₁")):::input
+        x2(("x₂")):::input
+    end
+
+    subgraph L1[" Camada oculta · n_h = 8 · tanh "]
+        direction TB
+        h1(("y₀,₁")):::hidden
+        h2(("y₀,₂")):::hidden
+        hd(("⋮")):::hidden
+        h8(("y₀,₈")):::hidden
+    end
+
+    subgraph L2[" Saída · sigmoid "]
+        direction TB
+        o1(("ŷ")):::output
+    end
+
+    x1 -- "W⁽⁰⁾, b⁽⁰⁾" --> h1
+    x1 --> h2
+    x1 --> h8
+    x2 --> h1
+    x2 --> h2
+    x2 --> h8
+
+    h1 -- "W⁽¹⁾, b⁽¹⁾" --> o1
+    h2 --> o1
+    hd --> o1
+    h8 --> o1
+
+    class L0,L1,L2 layer
+```
+
 $$
 v^{(0)} = W^{(0)} x + b^{(0)}, \qquad y^{(0)} = f\big(v^{(0)}\big)
 $$
