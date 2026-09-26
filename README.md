@@ -1,6 +1,6 @@
 # Projeto — Generalização do `exemplo4.py`
 
-##  Objetivo
+## Objetivo
 
 O trabalho consiste em **projetar e implementar uma rede neural
 multicamadas (MLP)** a partir do arquivo `exemplo4.py` fornecido em aula.
@@ -15,7 +15,7 @@ gradiente** para garantir a corretude do backpropagation.
 
 ---
 
-## 🔄 O que foi modificado em relação ao `exemplo4.py`
+## O que foi modificado em relação ao `exemplo4.py`
 
 | Item | `exemplo4.py` (original) | `rede_neural_generalizada.py` (nosso) |
 |------|--------------------------|-------------------------------------|
@@ -34,7 +34,7 @@ gradiente** para garantir a corretude do backpropagation.
 
 ---
 
-##  Arquitetura da Rede
+## Arquitetura da Rede
 
 MLP totalmente conectada, com forward pass vetorizado:
 
@@ -89,7 +89,7 @@ $$
 
 ---
 
-## 🧮 Derivação Analítica do Backpropagation
+## Derivação Analítica do Backpropagation
 
 ### Camada de saída
 
@@ -165,7 +165,7 @@ mas fica registrada como possível evolução do trabalho.
 
 ---
 
-## ✅ Verificação Numérica do Gradiente
+## Verificação Numérica do Gradiente
 
 Para validar a implementação do backward, cada gradiente analítico é
 comparado com uma aproximação por diferenças finitas centradas:
@@ -191,12 +191,14 @@ dataset, foi:
 
 Todos os erros estão muito abaixo do limiar de $10^{-6}$, confirmando
 que o backpropagation implementado está correto.
-> Os valores exatos podem variar levemente a cada execu\u00e7\u00e3o, pois a
-> gera\u00e7\u00e3o do dataset (`make_circles`) n\u00e3o usa semente fixa; apenas a
-> inicializa\u00e7\u00e3o dos pesos e o treino s\u00e3o reprodut\u00edveis (`np.random.seed`).
+
+> Os valores exatos podem variar levemente a cada execução, pois a
+> geração do dataset (`make_circles`) não usa semente fixa; apenas a
+> inicialização dos pesos e o treino são reprodutíveis (`np.random.seed`).
+
 ---
 
-## 📈 Resultado do Treinamento
+## Resultado do Treinamento
 
 - Dataset: `make_circles` (200 amostras, normalizado), não linearmente
   separável.
@@ -214,7 +216,7 @@ O script gera três figuras:
 
 ---
 
-## 📂 Arquivos do repositório
+## Arquivos do repositório
 
 | Arquivo | Descrição |
 |---------|-----------|
@@ -222,7 +224,7 @@ O script gera três figuras:
 | `rede_neural_generalizada.py` | Nossa implementação: rede vetorizada e genérica, com verificação numérica de gradiente, treino em mini-batch com momento e geração dos gráficos de resultado. Renomeado a partir de `atividade.py`. |
 | `requirements.txt` | Dependências do projeto (`numpy`, `matplotlib`, `scikit-learn`). |
 
-## ▶️ Como executar
+## Como executar
 
 ```bash
 python -m venv venv
