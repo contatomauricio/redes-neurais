@@ -1,14 +1,17 @@
-# Projeto — Generalização do `exemplo4.py`
+# Projeto: Generalização do `exemplo4.py`
+
+Autor: Maurício Rodrigues da Silva
+Disciplina: Matemática para Ciência de Dados
 
 ## Objetivo
 
 O trabalho consiste em **projetar e implementar uma rede neural
 multicamadas (MLP)** a partir do arquivo `exemplo4.py` fornecido em aula.
-O grupo tem liberdade para modificar a arquitetura, as funções de
+Tenho liberdade para modificar a arquitetura, as funções de
 ativação, o otimizador, o dataset e a estratégia de treino.
 
-Nossa proposta foi **generalizar** o código original — antes escrito
-com índices fixos e ativações *hard-coded* — para uma forma
+Minha proposta foi **generalizar** o código original, antes escrito
+com índices fixos e ativações *hard-coded*, para uma forma
 **vetorizada**, capaz de suportar diferentes tamanhos de camada,
 ativações e datasets, além de incluir uma **verificação numérica do
 gradiente** para garantir a corretude do backpropagation.
@@ -17,7 +20,7 @@ gradiente** para garantir a corretude do backpropagation.
 
 ## O que foi modificado em relação ao `exemplo4.py`
 
-| Item | `exemplo4.py` (original) | `rede_neural_generalizada.py` (nosso) |
+| Item | `exemplo4.py` (original) | `rede_neural_generalizada.py` (atual) |
 |------|--------------------------|-------------------------------------|
 | **Dataset** | `make_moons` | `make_circles` (mais difícil) |
 | **Nº amostras** | 100 | 200 |
@@ -236,7 +239,7 @@ ativação não linear (`tanh`).
 ![Curva de loss por época](curva_loss.svg)
 
 A loss média (MSE) cai de forma consistente ao longo das 200 épocas,
-sem oscilações bruscas — evidência de que o gradiente com momento e o
+sem oscilações bruscas, evidência de que o gradiente com momento e o
 treino em mini-batch estão convergindo de forma estável. A curva
 achata-se após ≈ 150 épocas, indicando que a rede já se aproxima de um
 mínimo local satisfatório para o problema.
@@ -247,7 +250,7 @@ mínimo local satisfatório para o problema.
 
 A região colorida mostra como a rede classifica cada ponto do plano. A
 fronteira aprendida acompanha o formato circular esperado, separando o
-círculo interno do externo — confirmando que os 8 neurônios da camada
+círculo interno do externo, confirmando que os 8 neurônios da camada
 oculta com `tanh` foram suficientes para capturar a não linearidade do
 problema. Os poucos pontos classificados incorretamente ficam
 concentrados na fronteira entre as duas classes, onde o ruído do
@@ -260,7 +263,7 @@ dataset (`noise=0.1`) mais se sobrepõe.
 | Arquivo | Descrição |
 |---------|-----------|
 | `exemplo4.py` | Código original fornecido em aula (rede fixa em 2 neurônios, índices *hard-coded*, dataset `make_moons`). |
-| `rede_neural_generalizada.py` | Nossa implementação: rede vetorizada e genérica, com verificação numérica de gradiente, treino em mini-batch com momento e geração dos gráficos de resultado. Renomeado a partir de `atividade.py`. |
+| `rede_neural_generalizada.py` | Minha implementação: rede vetorizada e genérica, com verificação numérica de gradiente, treino em mini-batch com momento e geração dos gráficos de resultado. Renomeado a partir de `atividade.py`. |
 | `requirements.txt` | Dependências do projeto (`numpy`, `matplotlib`, `scikit-learn`). |
 
 ## Como executar
